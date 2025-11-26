@@ -64,10 +64,10 @@ function findMatches() {
     const singleTapcode = tosingleTap(word);
 
     if (number.includes(multi_tap)) {
-      results.push(`${word}: ${multi_tap} ✔ match`);
+      results.push(`${word}: ${multi_tap} matched`);
     }
     if (number.includes(singleTapcode)) {
-      results.push(`${word}: ${singleTapcode} ✔ match`);
+      results.push(`${word}: ${singleTapcode} matched`);
     }
   });
 
@@ -76,4 +76,5 @@ function findMatches() {
 }
 </script>
 </body>
+
 </html>
