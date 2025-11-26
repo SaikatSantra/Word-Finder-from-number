@@ -48,7 +48,7 @@ function findMatches() {
   dictionary.forEach(word => {
     const singleTapcode = tosingleTap(word);
     if (number.includes(singleTapcode)) {
-      results.push(`${word}: ${singleTapcode} ✔ match`);
+      results.push(`${word}: ${singleTapcode} matched`);
     }
   });
 
@@ -58,3 +58,4 @@ function findMatches() {
 </script>
 </body>
 </html>
+
