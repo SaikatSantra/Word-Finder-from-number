@@ -20,6 +20,7 @@
 <pre id="output"></pre>
 
 <script>
+
 const singleTap = {
   a:"2", b:"2", c:"2",
   d:"3", e:"3", f:"3",
@@ -47,7 +48,7 @@ function findMatches() {
   dictionary.forEach(word => {
     const singleTapcode = tosingleTap(word);
     if (number.includes(singleTapcode)) {
-      results.push(`${word}: ${singleTapcode} matched`);
+      results.push(`${word}: ${singleTapcode} ✔ match`);
     }
   });
 
@@ -56,6 +57,4 @@ function findMatches() {
 }
 </script>
 </body>
-
 </html>
-
