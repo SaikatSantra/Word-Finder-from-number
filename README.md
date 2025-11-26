@@ -1,22 +1,40 @@
-# Word-Finder-from-number
+# Phone Keypad Word Matcher
 
-Based on the requirement, I noticed that “1-800-FLOWERS” translates to the number 1-800-3569377. That means FLOWERS = 3569377, where each letter corresponds to a digit on a phone keypad.
+This project converts phone keypad digits into possible matching words from a given dictionary.  
+Example: **1-800-FLOWERS → 1-800-3569377**, where **FLOWERS → 3569377** using the phone keypad mapping.
 
-However, the task provided the number 3662277, and a dictionary of words:
-["foo", "flowers", "bar", "foobar", "emo", "cap", "car", "cat", "far", "ra"]
+## Task Overview
 
-I need to find all possible words from the dictionary that match parts of the number.
+Given:
 
-Here are the matches I found:
+- Phone number: **3662277**
+- Dictionary: ["foo", "flowers", "bar", "foobar", "emo", "cap", "car", "cat", "far", "ra"]
 
-foo → 366 ✔
 
-bar → 227 ✔
+Find all dictionary words whose keypad digit representation appears as a contiguous substring of the phone number.
 
-foobar → 366227 ✔
+## Keypad Mapping
+`const singleTap = {
+  a:"2", b:"2", c:"2",
+  d:"3", e:"3", f:"3",
+  g:"4", h:"4", i:"4",
+  j:"5", k:"5", l:"5",
+  m:"6", n:"6", o:"6",
+  p:"7", q:"7", r:"7", s:"7",
+  t:"8", u:"8", v:"8",
+  w:"9", x:"9", y:"9", z:"9",
+  " ": "0"
+};`
 
-emo → 366 ✔
+## Output
 
-cap → 227 ✔
+| Word   | Number | Match |
+|--------|--------|--------|
+| foo    | 366    | ✔ |
+| emo    | 366    | ✔ |
+| bar    | 227    | ✔ |
+| cap    | 227    | ✔ |
+| car    | 227    | ✔ |
+| foobar | 366227 | ✔ |
 
-car → 227 ✔
+
