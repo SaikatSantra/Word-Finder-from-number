@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saikat's Task</title>
+</head>
+<body>
+    
+<h3>Word Finder from number </h3>
+
+<label>Number:</label><br>
+<input id="number" value="3662277" style="width:200px;height: 30px;"><br><br>
+
+<label>Dictionary:</label><br>
+<input id="dict" value="foo,flowers,bar,foobar,emo,cap,car,cat,far,ra" style="width:300px; height: 30px;"><br><br>
+
+<button onclick="findMatches()">Check Matches</button>
+
+<h3>Results:</h3>
+<pre id="output"></pre>
+
+<script>
+const multiTap = {
+  a:"2",   b:"22",  c:"222",
+  d:"3",   e:"33",  f:"333",
+  g:"4",   h:"44",  i:"444",
+  j:"5",   k:"55",  l:"555",
+  m:"6",   n:"66",  o:"666",
+  p:"7",   q:"77",  r:"777", s:"7777",
+  t:"8",   u:"88",  v:"888",
+  w:"9",   x:"99",  y:"999", z:"9999",
+  " ": "0"
+};
+
+const singleTap = {
+  a:"2", b:"2", c:"2",
+  d:"3", e:"3", f:"3",
+  g:"4", h:"4", i:"4",
+  j:"5", k:"5", l:"5",
+  m:"6", n:"6", o:"6",
+  p:"7", q:"7", r:"7", s:"7",
+  t:"8", u:"8", v:"8",
+  w:"9", x:"9", y:"9", z:"9",
+  " ": "0"
+};
+
+function toMultiTap(word) {
+  return word.toLowerCase().split("").map(ch => multiTap[ch] || "").join("");
+}
+
+function tosingleTap(word) {
+  return word.toLowerCase().split("").map(ch => singleTap[ch] || "").join("");
+}
+
+function findMatches() {
+  const number = document.getElementById("number").value.trim();
+  const dictInput = document.getElementById("dict").value.trim();
+  const dictionary = dictInput.split(",");
+
+  let results = [];
+
+  dictionary.forEach(word => {
+    const multi_tap = toMultiTap(word);
+    const singleTapcode = tosingleTap(word);
+
+    if (number.includes(multi_tap)) {
+      results.push(`${word}: ${multi_tap} ✔ match`);
+    }
+    if (number.includes(singleTapcode)) {
+      results.push(`${word}: ${singleTapcode} ✔ match`);
+    }
+  });
+
+  document.getElementById("output").textContent =
+    results.length ? results.join("\n") : "No matches found";
+}
+</script>
+</body>
+</html>
